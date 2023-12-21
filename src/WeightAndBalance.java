@@ -25,35 +25,25 @@ class Cessna extends Aircraft {
     }
 }
 
-class AircraftDataReader {};
-
-class UserDataReader {};
-
-class UserDataValidation {};
-
-class ResultsPlotter {};
-
 public class WeightAndBalance {
     public static void main(String[] args) {
 
         // TODO: read aircraft data for moments computation.
-        AircraftDataReader aircraftData = new AircraftDataReader();
+        AircraftData aircraftData = new AircraftData();
+        //      Obtain aircraft model from the user (152 or 172N).
+        //      Obtain B.E.W and moment.
 
-        // TODO: read user case data from text file.
-        //      The text file should specify seating configuration,
-        //      BEW information, fuel tanks capacity, total payload,
-        //      and fuel consumed by starting, run-up and taxi.
+        // TODO: read user payload data from text file.
+        PayloadData userData = new PayloadData();
+        //      Obtain filepath from the user.
+        //      Check validity of the data.
+        //      Store data in a suitable data structure.
 
-        UserDataReader userData = new UserDataReader();
-        // TODO: Checks validity of user case data.
-        //      This should be inside the UserDataReader class.
-        
-        // Initialization of the aircraft object.
+        // TODO: compute C.G position.
         Cessna aircraft = new Cessna();
-
-        // TODO: load the the aircraft with the corresponding payload.
-
-        // TODO: compute moments and C.G location.
+        //      Load the aircraft with the corresponding payload.
+        //      compute moments and C.G location.
+        //      Compare result with the C.G limits.
 
         // TODO: plot results and generate warnings if required.
     }
