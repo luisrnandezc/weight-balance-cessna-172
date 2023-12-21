@@ -25,7 +25,7 @@ class Cessna extends Aircraft {
     }
 }
 
-class DataReader {};
+class AircraftDataReader {};
 
 class UserDataReader {};
 
@@ -37,14 +37,17 @@ public class WeightAndBalance {
     public static void main(String[] args) {
 
         // TODO: read aircraft data for moments computation.
+        AircraftDataReader aircraftData = new AircraftDataReader();
 
         // TODO: read user case data from text file.
         //      The text file should specify seating configuration,
         //      BEW information, fuel tanks capacity, total payload,
         //      and fuel consumed by starting, run-up and taxi.
 
+        UserDataReader userData = new UserDataReader();
         // TODO: Checks validity of user case data.
-
+        //      This should be inside the UserDataReader class.
+        
         // Initialization of the aircraft object.
         Cessna aircraft = new Cessna();
 
