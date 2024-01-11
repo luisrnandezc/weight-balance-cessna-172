@@ -1,7 +1,6 @@
 // TODO: add general project description.
 
-import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.*;
 
 abstract class Aircraft {
 
@@ -30,8 +29,10 @@ public class WeightAndBalance {
 
         // TODO: read aircraft data for moments computation.
         AircraftData aircraftData = new AircraftData();
-        //      Obtain aircraft model from the user (152 or 172N).
-        //      Obtain B.E.W and moment.
+        HashMap<String, List<String[]>> requiredAircraftData = aircraftData.readFilesIntoHashMap();
+        String model = aircraftData.selectAircraftModel();
+        String seatsConfig = aircraftData.selectSeatingConfig();
+        int basicEmptyWeight = aircraftData.selectBasicEmptyWeight();
 
         // TODO: read user payload data from text file.
         PayloadData userData = new PayloadData();
