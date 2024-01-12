@@ -25,11 +25,16 @@ public class AircraftData {
         List<String> fileNames = new ArrayList<>();
         File folder = new File(path);
         for (File fileEntry : folder.listFiles()) {
-            if (fileEntry.getName().endsWith(".csv")) {
+            String[] ext = {".txt", ".csv"};
+            if (checkIfFileHasExtension(fileEntry.getName(), ext)) {
                 fileNames.add(fileEntry.getName());
             }
         }
         return fileNames;
+    }
+
+    public static boolean checkIfFileHasExtension(String filename, String[] ext) {
+        return Arrays.stream(ext).anyMatch(filename::endsWith);
     }
 
     public String scanDataFolderPath() {
@@ -75,8 +80,15 @@ public class AircraftData {
 
     public int selectBasicEmptyWeight() {
         Scanner scn = new Scanner(System.in);
-        System.out.print("Basic Empty Weight in Lbs: ");
+        System.out.print("Basic Empty Weight in lbs: ");
         String basicEmptyWeight = scn.next();
         return Integer.parseInt(basicEmptyWeight);
+    }
+
+    public int selectBasicEmptyWeightMoment() {
+        Scanner scn = new Scanner(System.in);
+        System.out.print("BEW Moment in lbs-in (/1000): ");
+        String basicEmptyWeightMoment = scn.next();
+        return Integer.parseInt(basicEmptyWeightMoment);
     }
 }

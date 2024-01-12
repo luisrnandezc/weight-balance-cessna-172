@@ -27,18 +27,14 @@ class Cessna extends Aircraft {
 public class WeightAndBalance {
     public static void main(String[] args) {
 
-        // TODO: read aircraft data for moments computation.
         AircraftData aircraftData = new AircraftData();
         HashMap<String, List<String[]>> requiredAircraftData = aircraftData.readFilesIntoHashMap();
         String model = aircraftData.selectAircraftModel();
         String seatsConfig = aircraftData.selectSeatingConfig();
         int basicEmptyWeight = aircraftData.selectBasicEmptyWeight();
+        int basicEmptyWeightMoment = aircraftData.selectBasicEmptyWeightMoment();
 
-        // TODO: read user payload data from text file.
-        PayloadData userData = new PayloadData();
-        //      Obtain filepath from the user.
-        //      Check validity of the data.
-        //      Store data in a suitable data structure.
+        // TODO: user data must be validated.
 
         // TODO: compute C.G position.
         Cessna aircraft = new Cessna();
