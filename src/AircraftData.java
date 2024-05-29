@@ -7,6 +7,8 @@ import com.opencsv.exceptions.CsvException;
 import java.io.*;
 import com.opencsv.*;
 
+import static java.lang.Integer.parseInt;
+
 public class AircraftData {
 
     public HashMap<String, List<String[]>> readFilesIntoHashMap() {
@@ -68,27 +70,71 @@ public class AircraftData {
 
     public String selectAircraftModel() {
         Scanner scn = new Scanner(System.in);
-        System.out.print("Specify the aircraft model (152 / 172): ");
-        return scn.next();
+        List<String> validModels = Arrays.asList("152", "172", "172N");
+        boolean validAircraftModel = false;
+        String userModel;
+        do {
+            System.out.print("Specify the aircraft model (152 / 172N): ");
+            userModel = scn.nextLine().toUpperCase();
+            if (validModels.contains(userModel)) {
+                validAircraftModel = true;
+            }
+            else {
+                System.out.print("Error: invalid aircraft model.");
+            }
+        } while (!validAircraftModel);
+
+        return userModel;
     }
 
     public String selectSeatingConfig() {
         Scanner scn = new Scanner(System.in);
-        System.out.print("Seating Configuration. Write 1 for Standard OR 2 for Optional: ");
-        return scn.next();
+        boolean validSeatConfig = false;
+        String userSeatConfig;
+        do {
+            System.out.print("Seating Configuration. Write 1 for Standard OR 2 for Optional: ");
+            userSeatConfig = scn.nextLine();
+            if (userSeatConfig.equals("1") || userSeatConfig.equals("2")) {
+                validSeatConfig = true;
+            }
+            else {
+                System.out.print("Error: invalid seating configuration.");
+            }
+        } while(!validSeatConfig);
+
+        return userSeatConfig;
     }
 
     public int selectBasicEmptyWeight() {
         Scanner scn = new Scanner(System.in);
-        System.out.print("Basic Empty Weight in lbs: ");
-        String basicEmptyWeight = scn.next();
-        return Integer.parseInt(basicEmptyWeight);
+        boolean validBasicEmptyWeight = false;
+        String userBasicEmptyWeight;
+        do {
+            System.out.print("Basic Empty Weight in lbs: ");
+            userBasicEmptyWeight = scn.nextLine();
+            try {
+                int intBasicEmptyWeight = Integer.parseInt(userBasicEmptyWeight);
+                if (intBasicEmptyWeight > 1081 && intBasicEmptyWeight < 1500) {
+                    validBasicEmptyWeight = true;
+                }
+                else {
+                    System.out.print("Error: Basic Empty Weight outside limits.");
+                }
+            }
+            catch(NumberFormatException e) {
+                System.out.print("Error: invalid Basic Empty Weight.");
+            }
+
+
+        } while(!validBasicEmptyWeight);
+
+        return userBEW;
     }
 
     public int selectBasicEmptyWeightMoment() {
         Scanner scn = new Scanner(System.in);
         System.out.print("BEW Moment in lbs-in (/1000): ");
         String basicEmptyWeightMoment = scn.next();
-        return Integer.parseInt(basicEmptyWeightMoment);
+        return parseInt(basicEmptyWeightMoment);
     }
 }
