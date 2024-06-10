@@ -1,6 +1,5 @@
 // TODO: include Class docstring.
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -50,8 +49,14 @@ public class CessnaCalculator extends AircraftWeightAndBalanceCalculator {
 
     private int computeTotalWeight() {
         int totalWeight = emptyWeight;
-        for (String[] load : payload) {
-            totalWeight = totalWeight + Integer.parseInt(load[0]);
+        for (int i = 0; i < 8; i++) {
+            int nextWeight = Integer.parseInt((payload.get(i))[0]);
+            if (i == 7) {   // the last weight corresponds to consumed fuel and must be subtracted.
+                totalWeight = totalWeight - nextWeight;
+            }
+            else {
+                totalWeight = totalWeight + nextWeight;
+            }
         }
         return totalWeight;
     }
@@ -66,7 +71,7 @@ public class CessnaCalculator extends AircraftWeightAndBalanceCalculator {
         double arm;
         double paxAndCargoMoment = 0.0;
         List<Float> arms = armsData.get(seatsConfig);
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < 6; i++) {
             weight = Double.parseDouble((payload.get(i))[0]);
             arm = arms.get(i);
             paxAndCargoMoment = paxAndCargoMoment + weight*arm;

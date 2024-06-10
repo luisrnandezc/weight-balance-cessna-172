@@ -13,8 +13,8 @@ public class BasicAircraftData {
     private final int size = weights.size();
 
     private HashMap<Integer, List<Float>> setArmsData() {
-        armsData.put(1, Arrays.asList(37.0f, 73.0f, 95.0f, 123.0f));
-        armsData.put(2, Arrays.asList(37.0f, 73.0f, 96.0f, 123.0f));
+        armsData.put(1, Arrays.asList(37.0f, 37.0f, 73.0f, 73.0f, 95.0f, 123.0f));
+        armsData.put(2, Arrays.asList(37.0f, 37.0f, 73.0f, 73.0f, 96.0f, 123.0f));
         return armsData;
     }
 
